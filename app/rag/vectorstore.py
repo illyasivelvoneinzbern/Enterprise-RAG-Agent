@@ -17,16 +17,9 @@ class VectorStore:
 
     def add(
         self,
-        embeddings,
+        vectors,
         documents
     ):
-
-        vectors=np.array(
-            embeddings
-        ).astype(
-            "float32"
-        )
-
 
         self.index.add(
             vectors
@@ -37,23 +30,15 @@ class VectorStore:
             documents
         )
 
-
-
     def search(
-        self,
-        query_embedding,
-        top_k=3
+    self,
+    query_vector,
+    top_k
     ):
-
-        query=np.array(
-            [query_embedding]
-        ).astype(
-            "float32"
-        )
 
 
         distances, indexes = self.index.search(
-            query,
+            query_vector,
             top_k
         )
 
@@ -61,17 +46,13 @@ class VectorStore:
         results=[]
 
 
-        for distance,idx in zip(
-            distances[0],
-            indexes[0]
-        ):
+        for idx in indexes[0]:
+
+            if idx == -1:
+                continue
 
             results.append(
-                {
-                    "text":self.documents[idx],
-                    "score":float(distance)
-                }
+                self.documents[idx]
             )
-
 
         return results

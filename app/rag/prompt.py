@@ -4,10 +4,16 @@ def build_prompt(
 ):
 
     context="\n".join(
-        [
-            doc["text"]
-            for doc in documents
-        ]
+    [
+    f"""
+    内容:
+    {doc['text']}
+
+    来源:
+    {doc['metadata']['source']}
+    """
+    for doc in documents
+    ]
     )
 
 

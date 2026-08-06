@@ -7,12 +7,15 @@ class Retriever:
     def __init__(
         self,
         vectorstore,
-        model
+        model,
+        reranker=None
     ):
 
         self.vectorstore = vectorstore
 
-        self.model = model
+        self.model=model
+
+        self.reranker=reranker
 
 
 
@@ -23,14 +26,23 @@ class Retriever:
     ):
 
         query_vector = self.model.encode(
-            query
+            [query]
         )
 
 
         results = self.vectorstore.search(
             query_vector,
-            top_k
+            top_k=10
         )
+
+
+        if self.reranker:
+
+            results=self.reranker.rerank(
+                query,
+                results,
+                top_k
+            )
 
 
         return results
