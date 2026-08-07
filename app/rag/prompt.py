@@ -1,11 +1,15 @@
 def build_prompt(
     query,
-    documents
+    documents,
+    history
 ):
 
     context="\n".join(
     [
     f"""
+    历史对话:
+    {history}
+    
     内容:
     {doc['text']}
 

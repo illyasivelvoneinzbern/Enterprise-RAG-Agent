@@ -1,16 +1,15 @@
-from app.rag.prompt import build_prompt
-from app.llm import chat
-
-
 class RAGAgent:
 
 
     def __init__(
         self,
-        retriever
+        memory,
+        agent_executor
     ):
 
-        self.retriever = retriever
+        self.memory = memory
+
+        self.agent_executor = agent_executor
 
 
 
@@ -19,53 +18,92 @@ class RAGAgent:
         query
     ):
 
-        documents = self.retriever.retrieve(
-            query,
-            top_k=3
+
+        self.memory.add_user_message(
+            query
         )
 
 
-        prompt = build_prompt(
-            query,
-            documents
+        messages = [
+
+            {
+                "role":"system",
+                "content":
+                "你是企业知识库助手。需要时调用工具查询知识库。"
+            },
+
+            {
+                "role":"user",
+                "content":query
+            }
+
+        ]
+
+
+        response = self.agent_executor.run(
+            messages
         )
 
 
-        response = chat(
-            prompt
+        self.memory.add_ai_message(
+            response
         )
-
-
-        sources = []
-
-        seen = set()
-
-
-        for doc in documents:
-
-            metadata = doc["metadata"]
-
-
-            key = (
-                metadata["source"],
-                metadata.get("page")
-            )
-
-
-            if key not in seen:
-
-                seen.add(key)
-
-                sources.append(
-                    metadata
-                )
 
 
         return {
-            "answer": response,
 
-            "sources": sources
+            "answer":response,
+
+            "sources":[]
+
         }
+
+
+
+    def stream_answer(
+        self,
+        query
+    ):
+
+
+        self.memory.add_user_message(
+            query
+        )
+
+
+        messages=[
+
+            {
+                "role":"system",
+                "content":
+                "你是企业知识库助手。需要时调用工具查询知识库。"
+            },
+
+            {
+                "role":"user",
+                "content":query
+            }
+
+        ]
+
+
+        full_answer=""
+
+
+        for chunk in self.agent_executor.stream_run(
+            messages
+        ):
+
+            full_answer += chunk
+
+            yield chunk
+
+
+
+        self.memory.add_ai_message(
+            full_answer
+        )
+
 
 
     def update_retriever(
@@ -73,4 +111,7 @@ class RAGAgent:
         retriever
     ):
 
-        self.retriever = retriever
+
+        self.agent_executor.update_retriever(
+            retriever
+        )
