@@ -1,0 +1,13 @@
+fastapi
+
+uvicorn
+
+openai
+
+python-dotenv
+
+sentence-transformers
+
+faiss-cpu
+
+pydantic-settings

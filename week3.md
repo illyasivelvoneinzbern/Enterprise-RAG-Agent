@@ -11,3 +11,5 @@ Embedding	Reranker
 因为 yield 返回的是分片结果，Memory需要保存完整 assistant response，供下一轮上下文使用。
 为什么 RAG 检索不能和 LLM streaming 同时开始？
 因为 LLM 生成前需要完整 prompt，而 prompt 依赖检索结果。
+我会通过日志记录请求链路，包括 query、Retriever耗时、Tool调用耗时以及LLM调用耗时，然后定位瓶颈。
+我实现了一个企业知识库 RAG Agent。用户可以上传企业文档，系统会进行文本切分、Embedding，并存入FAISS向量库。用户提问后，通过Retriever召回相关文档，再构造增强Prompt调用大模型生成答案。同时提供FastAPI接口支持服务化部署。

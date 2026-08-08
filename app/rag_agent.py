@@ -1,3 +1,5 @@
+from app.utils.logger import logger
+import time
 class RAGAgent:
 
 
@@ -6,7 +8,7 @@ class RAGAgent:
         memory,
         agent_executor
     ):
-
+        
         self.memory = memory
 
         self.agent_executor = agent_executor
@@ -17,8 +19,10 @@ class RAGAgent:
         self,
         query
     ):
-
-
+        start=time.time()
+        logger.info(
+            f"user query:{query}"
+        )
         self.memory.add_user_message(
             query
         )
@@ -40,10 +44,28 @@ class RAGAgent:
         ]
 
 
-        response = self.agent_executor.run(
-            messages
-        )
+        try:
 
+            response=self.agent_executor.run(
+                messages
+            )
+
+
+        except Exception as e:
+
+
+            logger.error(
+                f"agent error:{e}"
+            )
+
+
+            raise e
+        cost=time.time()-start
+
+
+        logger.info(
+            f"agent finished cost={cost:.2f}s"
+        )
 
         self.memory.add_ai_message(
             response
