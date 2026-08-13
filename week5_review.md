@@ -78,7 +78,6 @@ git add app/agent/agentic_rag.py        # Day 1
 git add app/rag/graph_rag.py            # Day 2
 git add app/rag/vector_store/           # Day 3
 git add app/rag/reranker_cross_encoder.py  # Day 4
-git add test_agentic_rag.py test_graph_rag.py test_vector_store.py test_reranker_cross_encoder.py
 git add dify_notes.md coze_notes.md week5_review.md
 git commit -m "Week 5: Agentic-RAG + GraphRAG + 向量库抽象 + CrossEncoder精排 + Dify/Coze实战"
 ```
