@@ -257,21 +257,30 @@ class HybridRetriever:
 # 4. 便捷构建函数（替代 build_knowledge_base）
 # ============================================
 
-def build_hybrid_retriever(file_path: str) -> HybridRetriever:
+def build_hybrid_retriever(file_path: str, use_cross_encoder: bool = False) -> HybridRetriever:
     """
     一键构建混合检索器。
 
     等价于 build_knowledge_base() 但返回 HybridRetriever 而非 Retriever。
 
+    参数:
+      file_path:          知识库文件路径
+      use_cross_encoder:  True 用 CrossEncoderReranker（bge-reranker-v2-m3，慢但准）
+                          False 用旧字符重合 Reranker（默认，保持兼容）
+
     用法:
       hr = build_hybrid_retriever("data/employee_policy.txt")
       results = hr.retrieve("员工年假几天？")
+
+      # 升级精排（Day 4）:
+      hr = build_hybrid_retriever("data/employee_policy.txt", use_cross_encoder=True)
     """
     from app.rag.loader.loader_factory import get_loader
     from app.rag.splitter import split_documents
     from app.rag.embedding import model
     from app.rag.vectorstore import VectorStore
     from app.rag.reranker import Reranker
+    from app.rag.reranker_cross_encoder import CrossEncoderReranker
 
     # 1. 读取 + 切块
     loader = get_loader(file_path)
@@ -283,6 +292,6 @@ def build_hybrid_retriever(file_path: str) -> HybridRetriever:
     store = VectorStore(dimension=len(vectors[0]))
     store.add(vectors, chunks)
 
-    # 3. 构建混合检索器（chunks 同时传给 BM25）
-    reranker = Reranker()
+    # 3. 构建混合检索器（chunks 同时传给 BM25），可插拔切换重排序器
+    reranker = CrossEncoderReranker() if use_cross_encoder else Reranker()
     return HybridRetriever(store, chunks, model, reranker)
