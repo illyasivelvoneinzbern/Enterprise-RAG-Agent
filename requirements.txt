@@ -1,13 +1,29 @@
+# ============ Web 框架 / ASGI ============
 fastapi
-
 uvicorn
+python-multipart
 
+# ============ LLM / Agent ============
 openai
+langgraph
+langchain-core
+mcp
 
+# ============ 向量化 / 检索 ============
+sentence-transformers
+faiss-cpu
+rank-bm25
+jieba
+numpy
+
+# ============ 文档解析 / 向量库 ============
+pypdf
+chromadb
+
+# ============ 配置 / 环境 ============
+pydantic
+pydantic-settings
 python-dotenv
 
-sentence-transformers
-
-faiss-cpu
-
-pydantic-settings
+# ============ 可观测（可选，未安装自动降级本地日志）============
+# langfuse

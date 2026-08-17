@@ -1,0 +1,235 @@
+2026-08-15 02:32:50,972 - INFO - user query:你好，请用一句话介绍你自己
+2026-08-15 02:32:56,196 - INFO - agent finished cost=5.22s
+2026-08-15 18:04:03,653 - INFO - {"event": "span.start", "name": "fake", "input": {"args": ["hi"], "kwargs": {}}, "ts": 1786788243.6536572}
+2026-08-15 18:04:03,654 - INFO - {"event": "span.end", "name": "fake", "elapsed_ms": 0.0, "output": {"usage": {"prompt_tokens": 5, "completion_tokens": 7, "total_tokens": 12}}, "ts": 1786788243.654163, "usage": {"prompt_tokens": 5, "completion_tokens": 7, "total_tokens": 12}}
+2026-08-15 18:04:14,671 - INFO - {"event": "span.start", "name": "traced_chat", "input": {"args": ["年假几天"], "kwargs": {}}, "ts": 1786788254.6719916}
+2026-08-15 18:04:14,673 - INFO - {"event": "span.end", "name": "traced_chat", "elapsed_ms": 0.0, "output": "[mock-answer] 年假几天 共 3 天", "ts": 1786788254.6731982}
+2026-08-15 18:04:20,404 - INFO - {"event": "span.start", "name": "traced_retrieve", "input": {"args": ["年假几天"], "kwargs": {"top_k": 3}}, "ts": 1786788260.4039378}
+2026-08-15 18:05:36,819 - INFO - {"event": "span.end", "name": "traced_retrieve", "elapsed_ms": 76413.9, "output": [{"text": "公司员工福利政策手册\n\n第一章：假期管理制度\n\n1. 年假制度\n\n员工入职满一年后，可以享受带薪年假。\n\n普通员工每年享有10天带薪年假。\n\n高级员工每年享有15天带薪年假。\n\n年假不可跨年度无限累计", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.032787}, {"text": "5天带薪年假。\n\n年假不可跨年度无限累计，未使用的年假需要根据公司规定处理。\n\n\n2. 病假制度\n\n员工因身体原因无法正常工作，可以申请病假。\n\n病假需要提供医院相关证明。\n\n连续病假超过7天，需要经", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.032258}, {"text": "院相关证明。\n\n连续病假超过7天，需要经过部门负责人审批。\n\n\n第二章：薪资管理制度\n\n员工工资每月15日发放。\n\n工资由基础工资、绩效奖金和福利补贴组成。\n\n员工可以通过公司内部系统查询工资明细。\n", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.031746}], "ts": 1786788336.8188422}
+2026-08-15 18:05:36,819 - INFO - {"event": "span.start", "name": "traced_retrieve", "input": {"args": ["病假工资怎么算"], "kwargs": {"top_k": 3}}, "ts": 1786788336.8198447}
+2026-08-15 18:05:36,875 - INFO - {"event": "span.end", "name": "traced_retrieve", "elapsed_ms": 55.88, "output": [{"text": "院相关证明。\n\n连续病假超过7天，需要经过部门负责人审批。\n\n\n第二章：薪资管理制度\n\n员工工资每月15日发放。\n\n工资由基础工资、绩效奖金和福利补贴组成。\n\n员工可以通过公司内部系统查询工资明细。\n", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.032266}, {"text": "5天带薪年假。\n\n年假不可跨年度无限累计，未使用的年假需要根据公司规定处理。\n\n\n2. 病假制度\n\n员工因身体原因无法正常工作，可以申请病假。\n\n病假需要提供医院相关证明。\n\n连续病假超过7天，需要经", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.032258}, {"text": "公司员工福利政策手册\n\n第一章：假期管理制度\n\n1. 年假制度\n\n员工入职满一年后，可以享受带薪年假。\n\n普通员工每年享有10天带薪年假。\n\n高级员工每年享有15天带薪年假。\n\n年假不可跨年度无限累计", "metadata": {"source": "data/employee_policy.txt", "page": 1}, "rrf_score": 0.032266}], "ts": 1786788336.8757293}
+2026-08-15 18:05:36,876 - INFO - {"event": "span.start", "name": "traced_chat", "input": {"args": ["年假几天"], "kwargs": {}}, "ts": 1786788336.8767314}
+2026-08-15 18:05:52,564 - INFO - {"event": "span.end", "name": "traced_chat", "elapsed_ms": 15687.73, "output": "根据中国《职工带薪年休假条例》，年假天数按“累计工作年限”计算：\n\n- 累计工作满1年不满10年：年假 **5天**\n- 累计工作满10年不满20年：年假 **10天**\n- 累计工作满20年及以上：年假 **15天**\n\n注意：国家法定休假日、休息日不计入年假。  \n如果单位规定比法定标准更高，按单位规定执行。", "ts": 1786788352.564459}
+2026-08-15 18:05:52,565 - INFO - {"event": "span.start", "name": "traced_chat", "input": {"args": ["病假工资怎么算"], "kwargs": {}}, "ts": 1786788352.564459}
+2026-08-15 18:08:24,576 - INFO - {"event": "span.end", "name": "traced_chat", "elapsed_ms": 152010.21, "output": "病假工资一般按以下方式计算：\n\n**核心公式：**  \n病假工资 = 病假工资计算基数 × 支付比例  \n但不得低于当地最低工资标准的 80%。\n\n### 1. 计算基数\n通常按劳动者正常出勤的月工资确定，一般不包括加班费、非常规性奖金、津贴等。  \n如果劳动合同或公司制度有明确约定，按约定执行。\n\n### 2. 支付比例\n支付比例各地规定不同，常见看工龄或地方规定。  \n如果没有特别约定，法律底线是：**病假工资不得低于当地最低工资标准的 80%**。\n\n### 3. 常见地区举例\n- **上海**：按连续工龄分档  \n  - 病假 6 个月内：工龄不满 2 年 60%，2—4 年 70%，4—6 年 80%，6—8 年 90%，8 年以上 100%。  \n  - 超过 6 个月改发疾病救济费：不满 1 年 40%，1—3 年 50%，3 年以上 60%。  \n  - 下限均为最低工资标准的 80%。\n\n- **北京**：按劳动合同或集体合同约定支付，但不得低于最低工资标准的 80%。\n\n- **深圳**：不低于本人正常工作时间工资的 60%，且不得低于最低工资标准的 80%。\n\n### 4. 注意事项\n- 病假工资只有在“医疗期”内才受上述保护，医疗期一般根据工龄为 3—24 个月。\n- 月工资折算日工资时，通常按月工资 ÷ 21.75 计算。\n- 上述标准是“应发工资”，实际到手可能因扣除社保、公积金而更低。\n\n如果你告诉我所在城市、连续工龄、正常月工资，我可以帮你具体计算。", "ts": 1786788504.5760972}
+2026-08-15 18:08:24,576 - INFO - {"event": "span.start", "name": "traced_chat_with_tools", "input": {"args": [[{"role": "user", "content": "年假几天?"}], [{"type": "function", "function": {"name": "knowledge_search", "description": "检索企业政策知识库", "parameters": {"type": "object", "properties": {"query": {"type": "string"}}}}}]], "kwargs": {}}, "ts": 1786788504.5760972}
+2026-08-15 18:08:26,835 - INFO - {"event": "span.end", "name": "traced_chat_with_tools", "elapsed_ms": 2259.07, "output": {"message": {"content": "", "refusal": null, "role": "assistant", "annotations": null, "audio": null, "function_call": null, "tool_calls": [{"id": "call_00_JTKSHlKJ3ERZCK4Jq0Qm2564", "function": {"arguments": "{\"query\": \"年假几天\"}", "name": "knowledge_search"}, "type": "function", "index": 0}], "reasoning_content": "The user is asking \"年假几天?\" which means \"How many days of annual leave?\" in Chinese. This seems to be a question about company policy on annual leave. I should search the enterprise policy knowledge base for information about annual leave days."}, "usage": {"completion_tokens": 96, "prompt_tokens": 348, "total_tokens": 444, "completion_tokens_details": {"accepted_prediction_tokens": null, "audio_tokens": null, "reasoning_tokens": 50, "rejected_prediction_tokens": null}, "prompt_tokens_details": {"audio_tokens": null, "cache_write_tokens": null, "cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 348}}, "ts": 1786788506.835167, "usage": {"prompt_tokens": 348, "completion_tokens": 96, "total_tokens": 444}}
+2026-08-15 18:30:44,220 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:30:44,221 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:30:44,222 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:30:44,222 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786789844.2228823}
+2026-08-15 18:30:44,222 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 0}
+2026-08-15 18:30:44,222 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 0}, "backend": "local", "ts": 1786789844.2228823}
+2026-08-15 18:30:44,222 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:30:44,222 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:30:44,222 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:30:44,223 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786789844.2238877}
+2026-08-15 18:30:44,223 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:30:44,223 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:30:44,223 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:30:44,223 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 0, "context_precision": 0}
+2026-08-15 18:30:44,223 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 0, "context_precision": 0}, "backend": "local", "ts": 1786789844.2238877}
+2026-08-15 18:30:44,223 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:30:44,223 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:30:44,223 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:30:44,223 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:30:44,223 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 1, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786789844.2238877}
+2026-08-15 18:32:16,153 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:32:16,153 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:32:16,153 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:32:16,153 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:32:16,153 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786789936.1537921}
+2026-08-15 18:32:16,153 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:32:16,154 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:32:16,154 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:32:16,154 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:32:16,154 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786789936.1547945}
+2026-08-15 18:32:16,154 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:32:16,154 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:32:16,154 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:32:16,154 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:32:16,154 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786789936.1547945}
+2026-08-15 18:32:16,154 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:32:16,154 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:32:16,154 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:32:16,154 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:32:16,154 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786789936.1547945}
+2026-08-15 18:32:16,155 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:32:16,155 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:32:16,155 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:32:16,155 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:32:16,155 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786789936.1557972}
+2026-08-15 18:33:38,090 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:33:38,090 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:33:38,090 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:33:38,090 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:33:38,090 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790018.0905454}
+2026-08-15 18:33:38,091 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:33:38,091 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:33:38,091 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:33:38,091 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:33:38,091 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790018.0916753}
+2026-08-15 18:33:38,091 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:33:38,092 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:33:38,092 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:33:38,092 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:33:38,092 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786790018.0927045}
+2026-08-15 18:33:38,092 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:33:38,092 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:33:38,092 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:33:38,092 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:33:38,092 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790018.0927045}
+2026-08-15 18:33:38,093 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:33:38,093 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:33:38,093 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:33:38,093 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:33:38,093 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790018.0937274}
+2026-08-15 18:35:05,922 - INFO - [eval] faithfulness=LLM-judge 判定 1 (耗时 11.8s)
+2026-08-15 18:35:07,979 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 2.1s)
+2026-08-15 18:35:12,316 - INFO - [eval] context_precision=LLM-judge 判定 0 (耗时 4.3s)
+2026-08-15 18:35:12,316 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:35:12,316 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790112.316818}
+2026-08-15 18:35:14,540 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 2.2s)
+2026-08-15 18:35:16,684 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 2.1s)
+2026-08-15 18:35:19,213 - INFO - [eval] context_precision=LLM-judge 判定 0 (耗时 2.5s)
+2026-08-15 18:35:19,213 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:35:19,213 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790119.2132432}
+2026-08-15 18:35:21,045 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 1.8s)
+2026-08-15 18:35:22,844 - INFO - [eval] answer_relevance=LLM-judge 判定 0 (耗时 1.8s)
+2026-08-15 18:35:33,504 - INFO - [eval] context_precision=LLM-judge 判定 1 (耗时 10.7s)
+2026-08-15 18:35:33,504 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:35:33,504 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786790133.5044012}
+2026-08-15 18:35:35,430 - INFO - [eval] faithfulness=LLM-judge 判定 1 (耗时 1.9s)
+2026-08-15 18:35:36,687 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 1.3s)
+2026-08-15 18:35:39,332 - INFO - [eval] context_precision=LLM-judge 判定 0 (耗时 2.6s)
+2026-08-15 18:35:39,332 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:35:39,332 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790139.332644}
+2026-08-15 18:35:41,891 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 2.6s)
+2026-08-15 18:35:44,636 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 2.7s)
+2026-08-15 18:35:46,712 - INFO - [eval] context_precision=LLM-judge 判定 1 (耗时 2.1s)
+2026-08-15 18:35:46,712 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:35:46,712 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790146.712267}
+2026-08-15 18:36:15,159 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:36:15,159 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:36:15,159 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:36:15,159 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:36:15,159 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790175.159953}
+2026-08-15 18:36:15,159 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:36:15,159 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:36:15,159 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:36:15,159 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:36:15,159 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790175.159953}
+2026-08-15 18:36:15,160 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:36:15,160 - INFO - [eval] answer_relevance=规则兜底判定 0
+2026-08-15 18:36:15,160 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:36:15,160 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:36:15,160 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786790175.1609554}
+2026-08-15 18:36:15,160 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:36:15,160 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:36:15,160 - INFO - [eval] context_precision=规则兜底判定 0
+2026-08-15 18:36:15,160 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:36:15,160 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790175.1609554}
+2026-08-15 18:36:15,160 - INFO - [eval] faithfulness=规则兜底判定 0
+2026-08-15 18:36:15,160 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:36:15,160 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:36:15,160 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:36:15,160 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790175.1609554}
+2026-08-15 18:36:38,595 - INFO - [eval] faithfulness=LLM-judge 判定 1 (耗时 7.5s)
+2026-08-15 18:36:40,438 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 1.8s)
+2026-08-15 18:36:42,126 - INFO - [eval] context_precision=LLM-judge 判定 1 (耗时 1.7s)
+2026-08-15 18:36:42,126 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:36:42,126 - INFO - {"event": "eval.score", "trace_id": "eval-demo-01", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790202.126937}
+2026-08-15 18:36:44,338 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 2.2s)
+2026-08-15 18:36:45,986 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 1.6s)
+2026-08-15 18:36:48,492 - INFO - [eval] context_precision=LLM-judge 判定 0 (耗时 2.5s)
+2026-08-15 18:36:48,492 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:36:48,492 - INFO - {"event": "eval.score", "trace_id": "eval-demo-02", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790208.4925473}
+2026-08-15 18:36:51,306 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 2.8s)
+2026-08-15 18:36:53,104 - INFO - [eval] answer_relevance=LLM-judge 判定 0 (耗时 1.8s)
+2026-08-15 18:36:56,310 - INFO - [eval] context_precision=LLM-judge 判定 1 (耗时 3.2s)
+2026-08-15 18:36:56,310 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}
+2026-08-15 18:36:56,310 - INFO - {"event": "eval.score", "trace_id": "eval-demo-03", "scores": {"faithfulness": 0, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786790216.3100314}
+2026-08-15 18:36:58,477 - INFO - [eval] faithfulness=LLM-judge 判定 1 (耗时 2.2s)
+2026-08-15 18:37:00,259 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 1.8s)
+2026-08-15 18:37:02,732 - INFO - [eval] context_precision=LLM-judge 判定 0 (耗时 2.5s)
+2026-08-15 18:37:02,732 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}
+2026-08-15 18:37:02,732 - INFO - {"event": "eval.score", "trace_id": "eval-demo-04", "scores": {"faithfulness": 1, "answer_relevance": 1, "context_precision": 0}, "backend": "local", "ts": 1786790222.732159}
+2026-08-15 18:37:05,189 - INFO - [eval] faithfulness=LLM-judge 判定 0 (耗时 2.5s)
+2026-08-15 18:37:08,460 - INFO - [eval] answer_relevance=LLM-judge 判定 1 (耗时 3.3s)
+2026-08-15 18:37:10,405 - INFO - [eval] context_precision=LLM-judge 判定 1 (耗时 1.9s)
+2026-08-15 18:37:10,405 - INFO - [eval] evaluate_rag scores={"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:37:10,405 - INFO - {"event": "eval.score", "trace_id": "eval-demo-05", "scores": {"faithfulness": 0, "answer_relevance": 1, "context_precision": 1}, "backend": "local", "ts": 1786790230.4055405}
+2026-08-15 18:38:01,174 - INFO - {"event": "eval.score", "trace_id": "trace-test-001", "scores": {"faithfulness": 1, "answer_relevance": 0, "context_precision": 1}, "backend": "local", "ts": 1786790281.1742384}
+2026-08-15 18:38:01,175 - INFO - [eval] faithfulness=规则兜底判定 1
+2026-08-15 18:38:01,175 - INFO - [eval] answer_relevance=规则兜底判定 1
+2026-08-15 18:38:01,175 - INFO - [eval] context_precision=规则兜底判定 1
+2026-08-15 18:38:01,175 - INFO - [eval] evaluate_rag scores={"faithfulness": 1, "answer_relevance": 1, "context_precision": 1}
+2026-08-15 18:41:46,321 - INFO - [PASS] 重试最终成功 | 返回值='ok-answer'
+2026-08-15 18:41:46,321 - INFO - [PASS] 调用次数=3 | 实际调用 3 次（2 失败 + 1 成功）
+2026-08-15 18:41:46,321 - INFO - [PASS] 退避 2 段 | 共休眠 2 段（1s→2s 指数）
+2026-08-15 18:41:46,321 - INFO - [PASS] 最后抛出原始异常 | 异常类型=TimeoutError
+2026-08-15 18:41:46,321 - INFO - [PASS] 重试次数=max_retries | 实际尝试 3 次（max_retries=3）
+2026-08-15 18:41:46,322 - INFO - [PASS] 存在随机抖动 | 20 段 delay 去重后 20 个不同值（说明叠加了 random.uniform）
+2026-08-15 18:41:46,322 - INFO - [FAIL] 退避为指数递增 | delay 前若干样本=[1.422, 2.379, 1.067, 2.424, 1.478, 2.474]
+2026-08-15 18:41:46,481 - INFO - [PASS] 队列计数=10 | 实际执行 10 个任务
+2026-08-15 18:41:46,481 - INFO - [PASS] 按序执行 | 执行顺序=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2026-08-15 18:41:46,481 - INFO - [PASS] 队列未阻塞 | submit 后并发消费完成，全程无阻塞
+2026-08-15 18:41:46,482 - INFO - [PASS] 优雅关闭 | close() 后 worker 正常退出
+2026-08-15 18:41:46,698 - INFO - [PASS] async 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:41:46,714 - INFO - [PASS] 未超时返回真实结果 | 返回值='正常结果'
+2026-08-15 18:41:46,932 - INFO - [PASS] sync 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:41:46,932 - INFO - [PASS] sync 未超时返回真实结果 | 返回值='正常同步结果'
+2026-08-15 18:41:46,932 - INFO - [PASS] 连续失败 3 次后打开 | 状态=open，失败计数=3
+2026-08-15 18:41:46,932 - INFO - [PASS] 冷却期快速失败 | 底层调用数不变（3），返回 fallback='服务暂时不可用，请稍后再试。'
+2026-08-15 18:41:47,333 - INFO - [FAIL] 冷却后半开 | 冷却结束后进入 half_open，状态=open
+2026-08-15 18:41:47,333 - INFO - [PASS] 半开探测成功 → 关闭并复位 | 状态=closed，失败计数=0，返回='健康响应'
+2026-08-15 18:41:47,634 - INFO - [PASS] 半开探测失败 → 立即回 open | 状态=open，失败计数=3
+2026-08-15 18:41:47,634 - ERROR - test_reliability.py 存在失败 FAIL=2
+2026-08-15 18:43:47,232 - INFO - [PASS] 重试最终成功 | 返回值='ok-answer'
+2026-08-15 18:43:47,232 - INFO - [PASS] 调用次数=3 | 实际调用 3 次（2 失败 + 1 成功）
+2026-08-15 18:43:47,232 - INFO - [PASS] 退避 2 段 | 共休眠 2 段（1s→2s 指数）
+2026-08-15 18:43:47,232 - INFO - [PASS] 最后抛出原始异常 | 异常类型=TimeoutError
+2026-08-15 18:43:47,233 - INFO - [PASS] 重试次数=max_retries | 实际尝试 3 次（max_retries=3）
+2026-08-15 18:43:47,233 - INFO - [PASS] 存在随机抖动 | 20 段 delay 去重后 20 个不同值（说明叠加了 random.uniform）
+2026-08-15 18:43:47,233 - INFO - [PASS] 退避为指数递增 | 每组内第一段 < 第二段（1s→2s 指数），样本=[1.422, 2.379, 1.067, 2.424, 1.478, 2.474, 1.119, 2.272, 1.118, 2.052, 1.311, 2.371, 1.397, 2.411, 1.162, 2.075, 1.113, 2.481, 1.232, 2.187]
+2026-08-15 18:43:47,401 - INFO - [PASS] 队列计数=10 | 实际执行 10 个任务
+2026-08-15 18:43:47,401 - INFO - [PASS] 按序执行 | 执行顺序=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2026-08-15 18:43:47,401 - INFO - [PASS] 队列未阻塞 | submit 后并发消费完成，全程无阻塞
+2026-08-15 18:43:47,401 - INFO - [PASS] 优雅关闭 | close() 后 worker 正常退出
+2026-08-15 18:43:47,617 - INFO - [PASS] async 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:43:47,633 - INFO - [PASS] 未超时返回真实结果 | 返回值='正常结果'
+2026-08-15 18:43:47,848 - INFO - [PASS] sync 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:43:47,848 - INFO - [PASS] sync 未超时返回真实结果 | 返回值='正常同步结果'
+2026-08-15 18:43:47,849 - INFO - [PASS] 连续失败 3 次后打开 | 状态=open，失败计数=3
+2026-08-15 18:43:47,849 - INFO - [PASS] 冷却期快速失败 | 底层调用数不变（3），返回 fallback='服务暂时不可用，请稍后再试。'
+2026-08-15 18:43:48,250 - INFO - [PASS] 状态序列 closed→open→half_open→closed | 回调序列=['open', 'half_open', 'closed']，最终状态=closed，失败计数=0，返回='健康响应'
+2026-08-15 18:43:48,251 - INFO - [PASS] 半开探测成功 → 关闭并复位 | 状态=closed，失败计数=0
+2026-08-15 18:43:48,552 - INFO - [PASS] 半开探测失败 → 立即回 open | 状态=open，失败计数=3
+2026-08-15 18:43:48,552 - INFO - test_reliability.py 全部通过 PASS=20
+2026-08-15 18:44:56,117 - INFO - [PASS] 重试最终成功 | 返回值='ok-answer'
+2026-08-15 18:44:56,117 - INFO - [PASS] 调用次数=3 | 实际调用 3 次（2 失败 + 1 成功）
+2026-08-15 18:44:56,117 - INFO - [PASS] 退避 2 段 | 共休眠 2 段（1s→2s 指数）
+2026-08-15 18:44:56,118 - INFO - [PASS] 最后抛出原始异常 | 异常类型=TimeoutError
+2026-08-15 18:44:56,118 - INFO - [PASS] 重试次数=max_retries | 实际尝试 3 次（max_retries=3）
+2026-08-15 18:44:56,118 - INFO - [PASS] 存在随机抖动 | 20 段 delay 去重后 20 个不同值（说明叠加了 random.uniform）
+2026-08-15 18:44:56,118 - INFO - [PASS] 退避为指数递增 | 每组内第一段 < 第二段（1s→2s 指数），样本=[1.422, 2.379, 1.067, 2.424, 1.478, 2.474, 1.119, 2.272, 1.118, 2.052, 1.311, 2.371, 1.397, 2.411, 1.162, 2.075, 1.113, 2.481, 1.232, 2.187]
+2026-08-15 18:44:56,285 - INFO - [PASS] 队列计数=10 | 实际执行 10 个任务
+2026-08-15 18:44:56,285 - INFO - [PASS] 按序执行 | 执行顺序=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2026-08-15 18:44:56,286 - INFO - [PASS] 队列未阻塞 | submit 后并发消费完成，全程无阻塞
+2026-08-15 18:44:56,286 - INFO - [PASS] 优雅关闭 | close() 后 worker 正常退出
+2026-08-15 18:44:56,504 - INFO - [PASS] async 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:44:56,520 - INFO - [PASS] 未超时返回真实结果 | 返回值='正常结果'
+2026-08-15 18:44:56,735 - INFO - [PASS] sync 超时降级 | 返回值='系统繁忙，请稍后再试。'
+2026-08-15 18:44:56,735 - INFO - [PASS] sync 未超时返回真实结果 | 返回值='正常同步结果'
+2026-08-15 18:44:56,735 - INFO - [PASS] 连续失败 3 次后打开 | 状态=open，失败计数=3
+2026-08-15 18:44:56,735 - INFO - [PASS] 冷却期快速失败 | 底层调用数不变（3），返回 fallback='服务暂时不可用，请稍后再试。'
+2026-08-15 18:44:57,137 - INFO - [PASS] 状态序列 closed→open→half_open→closed | 回调序列=['open', 'half_open', 'closed']，最终状态=closed，失败计数=0，返回='健康响应'
+2026-08-15 18:44:57,137 - INFO - [PASS] 半开探测成功 → 关闭并复位 | 状态=closed，失败计数=0
+2026-08-15 18:44:57,437 - INFO - [PASS] 半开探测失败 → 立即回 open | 状态=open，失败计数=3
+2026-08-15 18:44:57,437 - INFO - test_reliability.py 全部通过 PASS=20
+2026-08-15 19:05:19,841 - ERROR - [reliability] 兜底降级: boom

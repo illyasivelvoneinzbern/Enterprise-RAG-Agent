@@ -4,3 +4,6 @@ __pycache__/
 .streamlit/
 venv/
 .roo
+node_modules/
+web/dist/
+web/.npm-cache/
